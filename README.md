@@ -1,84 +1,48 @@
-<div align="center">
+\# 🗺️ UCS vs A\* vs Hill Climbing
+
+\### A Comparative Study of Search Algorithms on the Real Dhaka Road Network
 
 
 
-\# UCS vs A\* vs Hill Climbing
+<p align="center">
+
+&#x20; <strong>Can an intelligent search algorithm find the shortest route through a real city's road network more efficiently?</strong>
+
+</p>
 
 
 
-\### Route finding on the real Dhaka road network: a reproducible comparison of three classical search algorithms
+<p align="center">
+
+&#x20; <a href="https://colab.research.google.com/github/MejbahZidan/AI-Group-11/blob/main/AI\_Lab\_Project.ipynb">
+
+&#x20;   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+
+&#x20; </a>
+
+&#x20; <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python\&logoColor=white">
+
+&#x20; <img src="https://img.shields.io/badge/OSMnx-OpenStreetMap-green">
+
+&#x20; <img src="https://img.shields.io/badge/NetworkX-Graph%20Analysis-orange">
+
+&#x20; <img src="https://img.shields.io/badge/Experiments-60%20Pairs-purple">
+
+&#x20; <img src="https://img.shields.io/badge/Seed-42-informational">
+
+</p>
 
 
 
-<a href="https://colab.research.google.com/github/MejbahZidan/AI-Group-11/blob/main/AI\_Lab\_Project.ipynb">
+<p align="center">
 
-&#x20; <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+&#x20; <b>Bangladesh University of Professionals (BUP)</b><br>
 
-</a>
+&#x20; Department of ICT · BICE Program<br>
 
-<img src="https://img.shields.io/badge/Python-3.x-3776AB?logo=python\&logoColor=white" alt="Python">
+&#x20; Artificial Intelligence Laboratory · ICE-4108
 
-<img src="https://img.shields.io/badge/OSMnx-OpenStreetMap-7EBC6F" alt="OSMnx">
-
-<img src="https://img.shields.io/badge/NetworkX-graph-F7931E" alt="NetworkX">
-
-<img src="https://img.shields.io/badge/random%20seed-42-informational" alt="Seed 42">
-
-<img src="https://img.shields.io/badge/course-ICE--4108-1F2A44" alt="ICE-4108">
-
-
-
-\*\*Bangladesh University of Professionals (BUP)\*\* | Department of ICT | BICE Program
-
-Artificial Intelligence Laboratory (AIL), ICE-4108
-
-
-
-\[Results](#results) | \[How it works](#how-it-works) | \[Quick start](#quick-start) | \[Reproducibility](#reproducibility) | \[FAQ](#faq) | \[Cite](#cite-this-work)
-
-
-
-</div>
-
-
-
-\---
-
-
-
-\## TL;DR
-
-
-
-We ran \*\*Uniform Cost Search (UCS)\*\*, \*\*A\\\*\*\* and \*\*Hill Climbing\*\* on the same \*\*60 random start/goal pairs\*\* across Dhaka (routes of 2.82 km to 9.77 km, mean 5.77 km), using real OpenStreetMap data.
-
-
-
-<div align="center">
-
-
-
-| | UCS | \*\*A\\\*\*\* | Hill Climbing |
-
-|---|:---:|:---:|:---:|
-
-| Reached the goal | 100% | \*\*100%\*\* | \*\*0%\*\* |
-
-| Found the optimal route | 100% | \*\*100%\*\* | 0% |
-
-| Mean nodes expanded | 4461.88 | \*\*1251.67\*\* | 11.2 |
-
-| Mean time (ms) | 8.68 | \*\*3.56\*\* | 0.46 |
-
-
-
-</div>
-
-
-
-\- \*\*A\\\* is as good as UCS and much cheaper.\*\* Same optimal cost on all 60 pairs, \*\*71.9% fewer nodes\*\*, about \*\*2.4x faster\*\*.
-
-\- \*\*Hill Climbing is unreliable.\*\* It is cheap only because it gets stuck early, and it reached the goal in \*\*0 of 60\*\* runs.
+</p>
 
 
 
@@ -86,27 +50,47 @@ We ran \*\*Uniform Cost Search (UCS)\*\*, \*\*A\\\*\*\* and \*\*Hill Climbing\*\
 
 
 
-\## Why this project
+\## 📌 Overview
 
 
 
-Textbook search algorithms are usually shown on tiny graphs. This project asks a practical question: \*\*how do uninformed, informed and local search compare on a real city road network?\*\*
+Finding the shortest route in a real-world road network is more complicated than searching through a small textbook graph.
 
 
 
-| Family | Algorithm | Role in the study |
-
-|---|---|---|
-
-| Uninformed | \*\*UCS\*\* | Optimal baseline |
-
-| Informed | \*\*A\\\*\*\* (Haversine heuristic) | Shows the value of a heuristic |
-
-| Local | \*\*Hill Climbing\*\* | Shows the limits of greedy search |
+Road networks contain thousands of intersections, different road lengths, directional connections, and complex branching structures.
 
 
 
-Together they illustrate the trade-off between \*\*guarantee\*\*, \*\*speed\*\* and \*\*memory\*\*.
+This project investigates how three classical Artificial Intelligence search algorithms perform when solving the same route-finding problem on a real road network in Dhaka, Bangladesh.
+
+
+
+We implemented and evaluated:
+
+
+
+\- \*\*Uniform Cost Search (UCS)\*\* — an uninformed optimal search algorithm.
+
+\- \*\*A\\\* Search\*\* — an informed search algorithm using the Haversine distance heuristic.
+
+\- \*\*Hill Climbing\*\* — a local search algorithm that greedily selects the neighbour closest to the destination.
+
+
+
+All three algorithms were evaluated on the same \*\*60 randomly selected start-goal pairs\*\*, using the same road network and random seed.
+
+
+
+\### 🎯 The central finding
+
+
+
+A\* achieved the same optimal route cost as UCS across all 60 experiments while expanding substantially fewer nodes.
+
+
+
+Hill Climbing, despite its low computational effort, failed to reach the destination in every experiment.
 
 
 
@@ -114,77 +98,101 @@ Together they illustrate the trade-off between \*\*guarantee\*\*, \*\*speed\*\* 
 
 
 
-\## Results
+\## 📊 Key Results at a Glance
 
 
 
-\### Full comparison (60 pairs)
+<p align="center">
+
+&#x20; <img src="assets/fig2\_comparison\_dashboard.png" width="95%" alt="Algorithm performance comparison dashboard">
+
+</p>
 
 
 
-| Metric | UCS | A\* (Haversine) | Hill Climbing |
-
-|---|---:|---:|---:|
-
-| Goal reached | 100% | 100% | 0% |
-
-| Optimal solution rate | 100% | 100% | 0% |
-
-| Mean path cost (m) | 5768.85 | 5768.85 | no route found |
-
-| Mean nodes expanded | 4461.88 | \*\*1251.67\*\* | 11.2 |
-
-| Median nodes expanded | 4475.0 | \*\*847.5\*\* | 6.5 |
-
-| Nodes expanded (min to max) | 1123 to 7267 | 214 to 3427 | 1 to 68 |
-
-| Mean time (ms) | 8.68 | \*\*3.56\*\* | 0.46 |
-
-| Time (min to max, ms) | 2.39 to 16.13 | 1.11 to 10.04 | 0.38 to 0.82 |
+\### Performance comparison
 
 
 
-\- A\\\* expanded fewer nodes than UCS on \*\*all 60 pairs\*\*, with a per-pair saving of \*\*2.1x to 10.1x\*\* (median \*\*3.9x\*\*).
+| Evaluation Metric | UCS | A\* | Hill Climbing |
 
-\- A\\\* cost equalled UCS cost on \*\*every\*\* pair, so the optimality check passed 60 out of 60.
+|:---|---:|---:|---:|
 
+| Goal reached | 100% | \*\*100%\*\* | 0% |
 
+| Optimal solution rate | 100% | \*\*100%\*\* | 0% |
 
-> \[!NOTE]
+| Mean path cost | 5,768.85 m | \*\*5,768.85 m\*\* | No route |
 
-> Hill Climbing's low time and node count are not a strength. It stops quickly because it fails to find a route.
+| Mean nodes expanded | 4,461.88 | \*\*1,251.67\*\* | 11.2 |
 
+| Median nodes expanded | 4,475 | \*\*847.5\*\* | 6.5 |
 
-
-\### Search behaviour on the map
-
-
-
-<div align="center">
-
-&#x20; <img src="assets/fig1\_search\_maps.png" alt="Explored nodes of UCS, A\* and Hill Climbing on the Dhaka map for one start/goal pair" width="100%">
-
-</div>
+| Mean execution time | 8.68 ms | \*\*3.56 ms\*\* | 0.46 ms |
 
 
 
-\*Figure 1. One example pair. UCS expanded 2,328 nodes (4.9 ms) and A\\\* expanded 839 nodes (2.7 ms) for the same 7133 m route. Hill Climbing stopped after 5 nodes and failed. Colour shows expansion order, yellow (early) to dark (late). The black line is the route.\*
+<details>
+
+<summary><b>View detailed experimental statistics</b></summary>
 
 
 
-\### Performance dashboard
+| Metric | UCS | A\* | Hill Climbing |
+
+|:---|---:|---:|---:|
+
+| Minimum nodes expanded | 1,123 | 214 | 1 |
+
+| Maximum nodes expanded | 7,267 | 3,427 | 68 |
+
+| Minimum execution time | 2.39 ms | 1.11 ms | 0.38 ms |
+
+| Maximum execution time | 16.13 ms | 10.04 ms | 0.82 ms |
+
+| Successful experiments | 60/60 | 60/60 | 0/60 |
 
 
 
-<div align="center">
-
-&#x20; <img src="assets/fig2\_comparison\_dashboard.png" alt="Dashboard of mean nodes expanded, mean runtime, reliability and effort versus route length" width="85%">
-
-</div>
+</details>
 
 
 
-\*Figure 2. Mean nodes expanded, mean runtime, reliability, and effort versus route length. UCS and A\\\* effort rises with distance, but A\\\* stays well below UCS at every route length.\*
+\### 🏆 What do these numbers tell us?
+
+
+
+\*\*A\* vs UCS\*\*
+
+
+
+\- Both algorithms found optimal routes in all 60 experiments.
+
+\- A\* expanded \*\*71.9% fewer nodes\*\* on average.
+
+\- A\* was approximately \*\*2.44× faster\*\*.
+
+\- A\* expanded fewer nodes in every tested pair.
+
+\- The median node-expansion reduction was approximately 3.9×.
+
+
+
+\*\*Hill Climbing\*\*
+
+
+
+\- Expanded very few nodes.
+
+\- Had the lowest execution time.
+
+\- Failed in all 60 experiments.
+
+\- Its low computational cost came from getting stuck before reaching the destination.
+
+
+
+> \*\*Important:\*\* A fast algorithm is not necessarily a useful algorithm. Performance must be evaluated alongside solution quality and reliability.
 
 
 
@@ -192,7 +200,363 @@ Together they illustrate the trade-off between \*\*guarantee\*\*, \*\*speed\*\* 
 
 
 
-\## How it works
+\## 🛣️ Visualizing the Search Process
+
+
+
+The following visualization illustrates how the algorithms explore the same Dhaka road network.
+
+
+
+<p align="center">
+
+&#x20; <img src="assets/fig1\_search\_maps.png" width="100%" alt="UCS, A star and Hill Climbing search visualization">
+
+</p>
+
+
+
+\*\*Figure 1 — Search behaviour on the Dhaka road network.\*\*
+
+
+
+For the illustrated example:
+
+
+
+| Algorithm | Nodes Expanded | Execution Time |
+
+|:---|---:|---:|
+
+| UCS | 2,328 | 4.9 ms |
+
+| A\* | 839 | 2.7 ms |
+
+| Hill Climbing | 5 | Failed |
+
+
+
+UCS and A\* successfully found the same 7,133-metre route.
+
+
+
+A\* explored substantially fewer intersections, while Hill Climbing stopped after five nodes because it could not find a neighbour closer to the goal.
+
+
+
+\---
+
+
+
+\## 🧠 Problem Formulation
+
+
+
+We model the Dhaka road network as a \*\*weighted directed graph\*\*:
+
+
+
+\\\[
+
+G=(V,E)
+
+\\]
+
+
+
+Where:
+
+
+
+\- \\(V\\) represents road intersections.
+
+\- \\(E\\) represents directed road connections.
+
+\- Each edge has a weight representing its road-segment length in metres.
+
+
+
+\### Search problem definition
+
+
+
+| Component | Description |
+
+|:---|:---|
+
+| State | A road intersection |
+
+| Initial state | Selected starting intersection |
+
+| Actions | Travel along an outgoing road segment |
+
+| Transition | Move to the connected intersection |
+
+| Step cost | Length of the road segment |
+
+| Goal test | Current intersection equals destination |
+
+| Path cost | Sum of all road-segment lengths |
+
+
+
+Our objective is to minimize the total distance travelled:
+
+
+
+\\\[
+
+\\pi^\*=\\arg\\min\_{\\pi}\\sum\_{e\\in\\pi}w(e)
+
+\\]
+
+
+
+In simple terms, the objective is to find the shortest available road route between two intersections.
+
+
+
+\---
+
+
+
+\## ⚙️ Algorithms Implemented
+
+
+
+\### 1. Uniform Cost Search (UCS)
+
+
+
+\*\*Category:\*\* Uninformed Search
+
+
+
+UCS expands the node with the lowest accumulated path cost.
+
+
+
+\\\[
+
+f(n)=g(n)
+
+\\]
+
+
+
+Where \\(g(n)\\) represents the distance travelled from the starting point to the current node.
+
+
+
+\*\*Characteristics:\*\*
+
+\- Does not use a heuristic.
+
+\- Maintains a priority queue.
+
+\- Guarantees an optimal solution with non-negative edge costs.
+
+\- Can explore many unnecessary intersections.
+
+
+
+\### 2. A\* Search
+
+
+
+\*\*Category:\*\* Informed Search
+
+
+
+A\* combines the actual distance travelled with an estimated remaining distance.
+
+
+
+\\\[
+
+f(n)=g(n)+h(n)
+
+\\]
+
+
+
+Where:
+
+
+
+\- \\(g(n)\\): Actual distance from the start.
+
+\- \\(h(n)\\): Estimated distance from the current intersection to the destination.
+
+
+
+\#### Haversine heuristic
+
+
+
+We use the Haversine formula to estimate the straight-line geographical distance between two coordinates.
+
+
+
+\\\[
+
+a=\\sin^2\\left(\\frac{\\Delta\\varphi}{2}\\right)
+
++\\cos\\varphi\_1\\cos\\varphi\_2
+
+\\sin^2\\left(\\frac{\\Delta\\lambda}{2}\\right)
+
+\\]
+
+
+
+\\\[
+
+h(n)=2R\\arcsin(\\sqrt a)
+
+\\]
+
+
+
+Where:
+
+
+
+\- \\(R=6,371,000\\) metres.
+
+\- \\(\\varphi\\) represents latitude.
+
+\- \\(\\lambda\\) represents longitude.
+
+
+
+\*\*Why does A\* remain optimal?\*\*
+
+
+
+The straight-line distance between two geographical points cannot exceed the length of a road route connecting them.
+
+
+
+Therefore, the Haversine heuristic does not overestimate the remaining road distance. It is admissible for this distance-based problem.
+
+
+
+This allows A\* to preserve optimality while guiding the search towards the destination.
+
+
+
+\### 3. Hill Climbing
+
+
+
+\*\*Category:\*\* Local Search
+
+
+
+Hill Climbing selects the neighbouring intersection with the smallest estimated distance to the destination.
+
+
+
+Unlike UCS and A\*:
+
+
+
+\- It does not maintain a priority queue.
+
+\- It does not maintain a global frontier.
+
+\- It does not backtrack.
+
+\- It can become trapped at local minima or dead ends.
+
+
+
+If no neighbour offers a better heuristic value, the algorithm stops.
+
+
+
+This explains why Hill Climbing performed poorly on the tested road network.
+
+
+
+\### Algorithm comparison
+
+
+
+| Property | UCS | A\* | Hill Climbing |
+
+|:---|:---|:---|:---|
+
+| Search type | Uninformed | Informed | Local |
+
+| Heuristic | No | Yes | Yes |
+
+| Evaluation | \\(g(n)\\) | \\(g(n)+h(n)\\) | \\(h(n)\\) |
+
+| Priority queue | Yes | Yes | No |
+
+| Backtracking | Yes | Yes | No |
+
+| Complete | Yes\* | Yes\* | No |
+
+| Optimal | Yes\* | Yes\* | No |
+
+| Main advantage | Optimal baseline | Efficiency + optimality | Low search overhead |
+
+| Main limitation | More exploration | Higher memory usage | Local minima |
+
+
+
+\*Completeness and optimality assume the standard graph-search conditions, non-negative edge costs, and an admissible heuristic for A\*.\*
+
+
+
+\---
+
+
+
+\## 🔬 Experimental Methodology
+
+
+
+To ensure a fair comparison, all three algorithms were evaluated under identical experimental conditions.
+
+
+
+\### Experimental configuration
+
+
+
+| Parameter | Configuration |
+
+|:---|:---|
+
+| Geographic area | Dhaka, Bangladesh |
+
+| Network source | OpenStreetMap |
+
+| Network type | Drive network |
+
+| Download centre | 23.7461° N, 90.3742° E |
+
+| Download radius | 3,500 metres |
+
+| Number of pairs | 60 |
+
+| Random seed | 42 |
+
+| Minimum pair separation | 30% of map span |
+
+| Total algorithm executions | 180 |
+
+| Hill Climbing step limit | 20,000 |
+
+| Optimality tolerance | 1 metre |
+
+
+
+\### Experimental workflow
 
 
 
@@ -200,193 +564,59 @@ Together they illustrate the trade-off between \*\*guarantee\*\*, \*\*speed\*\* 
 
 flowchart TD
 
-&#x20;   A\["Load Dhaka road graph"] --> B\["Clean: keep largest strongly connected component"]
+&#x20;   A\["Download Dhaka road network"] --> B\["Construct directed weighted graph"]
 
-&#x20;   B --> C\["Choose 60 random start/goal pairs"]
+&#x20;   B --> C\["Clean and select largest strongly connected component"]
 
-&#x20;   C --> D\["Run UCS, A\* and Hill Climbing on every pair"]
+&#x20;   C --> D\["Generate 60 random start-goal pairs"]
 
-&#x20;   D --> E\["Record success, cost, nodes expanded, time"]
+&#x20;   D --> E\["Run UCS, A\* and Hill Climbing"]
 
-&#x20;   E --> F{"A\* cost equals UCS cost on every pair?"}
+&#x20;   E --> F\["Record execution metrics"]
 
-&#x20;   F -- Yes --> G\["Build summary table and figures"]
+&#x20;   F --> G\["Compare route costs and performance"]
 
-&#x20;   F -- No --> H\["Stop: heuristic not admissible"]
+&#x20;   G --> H\["Generate tables and visualizations"]
 
 ```
 
 
 
-\### Problem formulation
+\### Fairness and reproducibility
 
 
 
-The road network is a weighted directed graph $G = (V, E)$. Nodes are intersections and edges are road segments weighted by their length in metres.
+\- Every algorithm uses the same graph.
 
+\- Every algorithm receives the same 60 start-goal pairs.
 
+\- UCS and A\* use the same shared best-first search implementation.
 
-| Component | Definition |
+\- The heuristic is the primary difference between UCS and A\*.
 
-|---|---|
+\- A fixed random seed ensures repeatable pair selection.
 
-| State | A road intersection (graph node) |
+\- The largest strongly connected component is used to ensure directed reachability between selected pairs.
 
-| Initial state | The selected start intersection |
 
-| Actions | Drive along an outgoing road segment |
 
-| Transition | Move to the intersection at the other end of the segment |
+\### Evaluation metrics
 
-| Step cost | Length of the road segment in metres |
 
-| Goal test | The current node is the goal intersection |
 
-| Path cost | Sum of the segment lengths along the route |
+We evaluate each algorithm using:
 
 
 
-The objective is the minimum-length path:
+1\. \*\*Success Rate:\*\* Percentage of experiments where the destination is reached.
 
+2\. \*\*Optimality Rate:\*\* Percentage of successful solutions matching the UCS reference cost within the specified tolerance.
 
+3\. \*\*Path Cost:\*\* Total distance travelled in metres.
 
-$$\\pi^\* = \\arg\\min\_{\\pi} \\sum\_{e \\in \\pi} w(e)$$
+4\. \*\*Nodes Expanded:\*\* Number of nodes removed from the priority queue or visited during local search.
 
-
-
-\### The three algorithms
-
-
-
-| | UCS | A\* | Hill Climbing |
-
-|---|---|---|---|
-
-| Type | Uninformed | Informed | Local search |
-
-| Priority | $g(n)$ | $g(n) + h(n)$ | $h(n)$ of neighbours only |
-
-| Uses heuristic | No | Yes | Yes |
-
-| Keeps a frontier | Yes | Yes | No |
-
-| Complete | Yes | Yes | No |
-
-| Optimal | Yes | Yes, if $h$ is admissible | No |
-
-| Time | $O((V+E)\\log V)$ with a binary heap | Same worst case, usually far less | $O(m \\cdot b)$ |
-
-| Space | Frontier + explored set | Frontier + explored set | $O(1)$ extra |
-
-
-
-Here $g(n)$ is the road distance travelled so far, $h(n)$ is the straight-line estimate to the goal, $m$ is the number of steps taken and $b$ is the branching factor.
-
-
-
-\*\*One engine for UCS and A\\\*.\*\* Both run on the same best-first search with priority $f(n) = g(n) + h(n)$:
-
-
-
-| Algorithm | Heuristic |
-
-|---|---|
-
-| UCS | $h(n) = 0$ |
-
-| A\* | $h(n) = $ Haversine distance to the goal |
-
-
-
-Because the engine is shared, any difference in the results comes from the heuristic alone.
-
-
-
-\*\*Haversine heuristic.\*\*
-
-
-
-$$a = \\sin^2\\left(\\frac{\\Delta\\varphi}{2}\\right) + \\cos\\varphi\_1 \\cos\\varphi\_2 \\sin^2\\left(\\frac{\\Delta\\lambda}{2}\\right)$$
-
-
-
-$$h(n) = 2R \\arcsin\\left(\\sqrt{a}\\right), \\quad R = 6{,}371{,}000 \\text{ m}$$
-
-
-
-A road is never shorter than the straight line between its ends, so $h(n)$ never overestimates the remaining distance. It is \*\*admissible\*\*, which is why A\\\* stays optimal.
-
-
-
-\*\*Hill Climbing\*\* moves to the neighbour closest to the goal and stops if no neighbour is closer. It has no frontier and cannot backtrack.
-
-
-
-<details>
-
-<summary><b>Show the core implementation</b></summary>
-
-
-
-```python
-
-def best\_first(s, t, h):
-
-&#x20;   # Shared engine: priority = g + h. h = 0 gives UCS; h = Haversine gives A\*
-
-&#x20;   g = {s: 0.0}; parent = {s: -1}; pq = \[(h\[s], 0.0, s)]; order = \[]
-
-&#x20;   while pq:
-
-&#x20;       \_, gc, u = heapq.heappop(pq)
-
-&#x20;       if gc > g\[u] + 1e-9: continue
-
-&#x20;       order.append(u)
-
-&#x20;       if u == t: break
-
-&#x20;       for v, w in adj\[u]:
-
-&#x20;           ng = gc + w
-
-&#x20;           if ng < g.get(v, math.inf):
-
-&#x20;               g\[v] = ng; parent\[v] = u
-
-&#x20;               heapq.heappush(pq, (ng + h\[v], ng, v))
-
-&#x20;   # the route is rebuilt from the parent links
-
-
-
-def ucs(s, t):    return best\_first(s, t, \[0.0] \* N)
-
-def a\_star(s, t): return best\_first(s, t, hav\_to(t).tolist())
-
-
-
-def hill\_climb(s, t, max\_steps=20000):
-
-&#x20;   h = hav\_to(t); cur, path, cost = s, \[s], 0.0
-
-&#x20;   while cur != t and len(path) < max\_steps:
-
-&#x20;       best, bh, bw = None, h\[cur], 0.0
-
-&#x20;       for v, w in adj\[cur]:
-
-&#x20;           if h\[v] < bh: best, bh, bw = v, h\[v], w
-
-&#x20;       if best is None: break          # dead end or local minimum
-
-&#x20;       cur = best; cost += bw; path.append(cur)
-
-```
-
-
-
-</details>
+5\. \*\*Execution Time:\*\* Wall-clock execution time in milliseconds.
 
 
 
@@ -394,63 +624,49 @@ def hill\_climb(s, t, max\_steps=20000):
 
 
 
-\## Reproducibility
+\## 🚀 Getting Started
 
 
 
-Everything is controlled and repeatable.
+You can reproduce the experiment using Google Colab or run the notebook locally.
 
 
 
-| Item | Setting |
-
-|---|---|
-
-| Data | OpenStreetMap drive network, 3,500 m radius around 23.7461 N, 90.3742 E |
-
-| Cleaning | Parallel roads reduced to the shortest, self-loops removed, \*\*largest strongly connected component only\*\* (so every pair is reachable) |
-
-| Pairs | 60 random start/goal pairs, each at least \*\*30% of the map span\*\* apart |
-
-| Fairness | Same graph, same pairs and same shared engine for every algorithm |
-
-| Seed | \*\*42\*\* |
-
-| Total runs | 60 pairs x 3 algorithms = \*\*180\*\* |
-
-| Hill Climbing step limit | 20,000 |
-
-| Optimality tolerance | 1 m |
+\### Option 1 — Google Colab (Recommended)
 
 
 
-\*\*Metrics:\*\* success rate, optimal rate (cost equals UCS cost), path cost, nodes expanded (proxy for time and space), and wall-clock time per run in ms (includes the heuristic calculation).
+<p align="center">
+
+&#x20; <a href="https://colab.research.google.com/github/MejbahZidan/AI-Group-11/blob/main/AI\_Lab\_Project.ipynb">
+
+&#x20;   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Google Colab">
+
+&#x20; </a>
+
+</p>
 
 
 
-\---
+1\. Open the notebook using the Colab button.
+
+2\. Run the experiment cell.
+
+3\. Allow the road network to load.
+
+4\. Wait for all three algorithms to complete.
+
+5\. Review the generated comparison tables and visualizations.
+
+6\. Download the results ZIP.
 
 
 
-\## Quick start
+\### Option 2 — Run Locally
 
 
 
-\### Option A: Google Colab (recommended, no setup)
-
-
-
-1\. Click the \*\*Open In Colab\*\* badge at the top of this page.
-
-2\. Run the single cell. Packages install automatically.
-
-3\. Wait for the Dhaka network to download or load.
-
-4\. Review the tables and figures, then download the results ZIP.
-
-
-
-\### Option B: Run locally
+Clone the repository:
 
 
 
@@ -458,9 +674,39 @@ Everything is controlled and repeatable.
 
 git clone https://github.com/MejbahZidan/AI-Group-11.git
 
+```
+
+
+
+Navigate to the project:
+
+
+
+```bash
+
 cd AI-Group-11
 
+```
+
+
+
+Install dependencies:
+
+
+
+```bash
+
 pip install osmnx networkx numpy pandas matplotlib jupyter
+
+```
+
+
+
+Launch the notebook:
+
+
+
+```bash
 
 jupyter notebook AI\_Lab\_Project.ipynb
 
@@ -468,67 +714,23 @@ jupyter notebook AI\_Lab\_Project.ipynb
 
 
 
-\### Where the map data comes from
+\### Data loading behaviour
 
 
 
-1\. If `dhaka\_street\_network.graphml` is next to the notebook, it is used.
-
-2\. Otherwise the Dhaka drive network is downloaded with OSMnx.
-
-3\. If OpenStreetMap is unreachable, a synthetic jittered-grid network is used so the notebook still runs.
+The notebook follows this order:
 
 
 
-> \[!IMPORTANT]
+1\. Uses `dhaka\_street\_network.graphml` if available.
 
-> Results from the synthetic fallback will \*\*not\*\* match the Dhaka results reported here.
+2\. Otherwise, attempts to download the Dhaka road network using OSMnx.
 
-
-
-\### Configuration
+3\. If OpenStreetMap cannot be reached, uses a synthetic jittered-grid network as a fallback.
 
 
 
-Edit these constants at the top of the notebook cell:
-
-
-
-| Constant | Default | Meaning |
-
-|---|---|---|
-
-| `CENTER` | `(23.7461, 90.3742)` | Download centre (lat, lon) |
-
-| `RADIUS\_M` | `3500` | Download radius in metres |
-
-| `N\_PAIRS` | `60` | Number of start/goal pairs |
-
-| `MIN\_SPAN` | `0.30` | Minimum pair distance as a fraction of map span |
-
-| `SEED` | `42` | Random seed |
-
-
-
-\### Outputs
-
-
-
-| File | Description |
-
-|---|---|
-
-| `summary.csv` | Aggregated statistics for the three algorithms |
-
-| `all\_runs.csv` | Result of every algorithm on every pair (180 rows) |
-
-| `fig1\_search\_maps.png` | Explored nodes and route for one example pair |
-
-| `fig2\_comparison\_dashboard.png` | Four-panel comparison dashboard |
-
-
-
-The notebook also packages these files as a downloadable ZIP.
+> \*\*Note:\*\* Synthetic fallback results are not the same as the real Dhaka road-network results reported in this study.
 
 
 
@@ -536,147 +738,7 @@ The notebook also packages these files as a downloadable ZIP.
 
 
 
-\## FAQ
-
-
-
-<details>
-
-<summary><b>Why is Hill Climbing the fastest if it never finds a route?</b></summary>
-
-
-
-Because it stops at the first node where no neighbour is closer to the goal. In a city, dead ends and roads that must first turn away from the goal are common, so it terminates early with no route. Speed means nothing without a valid answer.
-
-</details>
-
-
-
-<details>
-
-<summary><b>Why does A\* stay optimal?</b></summary>
-
-
-
-Its heuristic is admissible. The Haversine distance is a straight line, and a road is never shorter than the straight line between the same two points, so the estimate never overestimates. The notebook checks this directly: A\* cost equals UCS cost on every pair.
-
-</details>
-
-
-
-<details>
-
-<summary><b>Why keep only the largest strongly connected component?</b></summary>
-
-
-
-It guarantees a directed route exists between every pair. Any failure is then caused by the algorithm, not by an unreachable destination.
-
-</details>
-
-
-
-<details>
-
-<summary><b>Is the time comparison fair?</b></summary>
-
-
-
-Yes. UCS and A\* run on the same engine, and the A\* time includes computing the Haversine heuristic. Only the heuristic differs.
-
-</details>
-
-
-
-<details>
-
-<summary><b>Was memory measured?</b></summary>
-
-
-
-Not directly. Nodes expanded is used as the measure of space, since UCS and A\* store a frontier and an explored set while Hill Climbing stores only its current path.
-
-</details>
-
-
-
-\---
-
-
-
-\## Beyond A\*: what would come next
-
-
-
-For this study A\\\* is the best of the three chosen algorithms because it is both optimal and efficient. For production navigation, other methods can do better:
-
-
-
-| Algorithm | What it improves | Trade-off |
-
-|---|---|---|
-
-| Greedy Best-First | Faster | Not optimal |
-
-| Weighted A\* | Faster | Bounded suboptimality |
-
-| Bidirectional A\* | About half the search space | More complex |
-
-| ALT landmarks A\* | Tighter heuristic | Needs preprocessing |
-
-| Contraction Hierarchies | Fastest, used by real routing engines | Heavy preprocessing, static graph |
-
-| IDA\* | Low memory | Repeated work on road graphs |
-
-| Hill Climbing with restarts | Can escape local minima | Still no guarantee |
-
-
-
-\---
-
-
-
-\## Limitations and roadmap
-
-
-
-\*\*Current limitations\*\*
-
-
-
-\- Cost is road length only (no travel time, traffic or vehicle restrictions)
-
-\- One area of Dhaka is covered
-
-\- Memory and solution depth (number of road segments) were not recorded
-
-\- Hill Climbing was tested without random restarts
-
-
-
-\*\*Roadmap\*\*
-
-
-
-\- \[ ] Travel-time and traffic-aware edge weights
-
-\- \[ ] More cities and different road densities
-
-\- \[ ] Landmark (ALT) heuristics versus Haversine
-
-\- \[ ] Contraction Hierarchies comparison
-
-\- \[ ] Random-restart Hill Climbing
-
-\- \[ ] Peak memory and solution depth measurements
-
-
-
-\---
-
-
-
-\## Repository structure
+\## 📁 Project Structure
 
 
 
@@ -684,31 +746,53 @@ For this study A\\\* is the best of the three chosen algorithms because it is bo
 
 AI-Group-11/
 
-|-- AI\_Lab\_Project.ipynb          # Full experiment in a single Colab cell
+│
 
-|-- assets/                       # Figures shown in this README
+├── AI\_Lab\_Project.ipynb
 
-|   |-- fig1\_search\_maps.png
+│
 
-|   `-- fig2\_comparison\_dashboard.png
+├── assets/
 
-|-- results/                      # Generated by the notebook
+│   ├── fig1\_search\_maps.png
 
-|   |-- summary.csv
+│   └── fig2\_comparison\_dashboard.png
 
-|   |-- all\_runs.csv
+│
 
-|   |-- fig1\_search\_maps.png
+├── results/
 
-|   `-- fig2\_comparison\_dashboard.png
+│   ├── summary.csv
 
-`-- README.md
+│   ├── all\_runs.csv
+
+│   ├── fig1\_search\_maps.png
+
+│   └── fig2\_comparison\_dashboard.png
+
+│
+
+└── README.md
 
 ```
 
 
 
-\*\*Tech stack:\*\* Python 3, Google Colab, OSMnx, NetworkX, NumPy, Pandas, Matplotlib, heapq.
+\### Generated outputs
+
+
+
+| Output | Description |
+
+|:---|:---|
+
+| `summary.csv` | Aggregated performance statistics |
+
+| `all\_runs.csv` | Individual results from all 180 executions |
+
+| `fig1\_search\_maps.png` | Search exploration visualization |
+
+| `fig2\_comparison\_dashboard.png` | Performance comparison dashboard |
 
 
 
@@ -716,7 +800,245 @@ AI-Group-11/
 
 
 
-\## Cite this work
+\## ⚠️ Limitations
+
+
+
+Although the experiment demonstrates the practical differences between classical search algorithms, several limitations remain:
+
+
+
+\- Edge weights represent road distance, not actual travel time.
+
+\- Traffic conditions and congestion are not considered.
+
+\- The experiment covers only one geographical area of Dhaka.
+
+\- Memory consumption was not directly measured.
+
+\- Search depth was not recorded.
+
+\- Hill Climbing was evaluated without random restarts.
+
+
+
+\### Future Improvements
+
+
+
+\- \[ ] Introduce traffic-aware and travel-time-based edge weights.
+
+\- \[ ] Expand experiments to other cities in Bangladesh.
+
+\- \[ ] Compare Haversine with landmark-based heuristics (ALT).
+
+\- \[ ] Implement Bidirectional A\*.
+
+\- \[ ] Explore Contraction Hierarchies.
+
+\- \[ ] Evaluate Random-Restart Hill Climbing.
+
+\- \[ ] Measure peak memory consumption.
+
+\- \[ ] Record solution depth and path length in number of segments.
+
+
+
+\---
+
+
+
+\## ❓ Frequently Asked Questions
+
+
+
+<details>
+
+<summary><b>Why is A\* better than UCS in this experiment?</b></summary>
+
+
+
+A\* uses the Haversine heuristic to estimate the remaining distance to the destination. This guides the search towards promising intersections instead of exploring every direction equally.
+
+
+
+As a result, it achieved the same optimal path cost while expanding 71.9% fewer nodes on average.
+
+</details>
+
+
+
+<details>
+
+<summary><b>Why did Hill Climbing fail in all 60 experiments?</b></summary>
+
+
+
+Hill Climbing only considers the immediate neighbours of its current node. It cannot backtrack when a locally attractive choice leads to a dead end or when reaching the destination requires temporarily moving away from it.
+
+
+
+It therefore stopped before reaching the goal in all tested experiments.
+
+</details>
+
+
+
+<details>
+
+<summary><b>Why use the largest strongly connected component?</b></summary>
+
+
+
+The road network is directed. Selecting the largest strongly connected component ensures that a directed path exists between every pair of nodes within that component.
+
+
+
+This helps isolate algorithm performance from connectivity-related failures.
+
+</details>
+
+
+
+<details>
+
+<summary><b>Does lower execution time always mean a better algorithm?</b></summary>
+
+
+
+No. Hill Climbing had the lowest execution time, but it failed to find a route in every experiment.
+
+
+
+An algorithm must be evaluated based on efficiency, solution quality and reliability together.
+
+</details>
+
+
+
+<details>
+
+<summary><b>Was memory consumption measured?</b></summary>
+
+
+
+No. Nodes expanded were recorded as a search-effort metric, not as a direct measurement of memory usage. UCS and A\* maintain frontiers and explored sets, while Hill Climbing uses a much more limited search structure.
+
+</details>
+
+
+
+\---
+
+
+
+\## 🔭 Beyond This Experiment
+
+
+
+A\* performed best among the three selected algorithms in our experiments.
+
+
+
+However, real-world navigation systems can use more advanced techniques.
+
+
+
+| Algorithm | Potential advantage |
+
+|:---|:---|
+
+| Greedy Best-First Search | More aggressive heuristic guidance |
+
+| Weighted A\* | Faster search with bounded suboptimality under appropriate conditions |
+
+| Bidirectional A\* | Search from both endpoints |
+
+| ALT | Improved heuristic estimates using landmarks |
+
+| Contraction Hierarchies | Extremely fast road-network queries after preprocessing |
+
+| IDA\* | Lower memory requirements |
+
+| Random-Restart Hill Climbing | Attempts to escape local minima |
+
+
+
+\---
+
+
+
+\## 👨‍💻 Team Members
+
+
+
+This project was developed as part of the Artificial Intelligence Laboratory course at Bangladesh University of Professionals.
+
+
+
+| Contributor | Student ID |
+
+|:---|:---|
+
+| Md. Mejbaul Islam Zidan | 23549009069 |
+
+| Md. Hemel Parvej | 23549009005 |
+
+| Most. Nair Nazmim Roja | 2254901013 |
+
+
+
+\*\*Academic Supervision\*\*
+
+
+
+\- Jasiya Fairiz Raisa — Lecturer, Department of ICT
+
+\- Nazneen Akter — Assistant Professor, Department of ICT
+
+
+
+\*\*Institution:\*\* Bangladesh University of Professionals (BUP)  
+
+\*\*Program:\*\* BICE 2023  
+
+\*\*Department:\*\* ICT  
+
+\*\*Course:\*\* Artificial Intelligence Laboratory (ICE-4108)
+
+
+
+\---
+
+
+
+\## 📚 References
+
+
+
+1\. Russell, S. and Norvig, P. (2020). \*Artificial Intelligence: A Modern Approach\*, 4th Edition. Pearson.
+
+2\. Hart, P. E., Nilsson, N. J. and Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. \*IEEE Transactions on Systems Science and Cybernetics\*, 4(2), 100–107.
+
+3\. Dijkstra, E. W. (1959). A Note on Two Problems in Connexion with Graphs. \*Numerische Mathematik\*, 1, 269–271.
+
+4\. Boeing, G. (2017). OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. \*Computers, Environment and Urban Systems\*, 65, 126–139.
+
+5\. \[OpenStreetMap Contributors](https://www.openstreetmap.org/).
+
+6\. Hagberg, A., Schult, D. and Swart, P. (2008). Exploring Network Structure, Dynamics, and Function Using NetworkX. \*Proceedings of the 7th Python in Science Conference\*, 11–15.
+
+
+
+\---
+
+
+
+\## 📖 Citation
+
+
+
+If you reference this project in academic work:
 
 
 
@@ -724,15 +1046,23 @@ AI-Group-11/
 
 @misc{aigroup11\_2026,
 
-&#x20; title        = {Comparative Analysis of UCS, A\* and Hill Climbing for Route Finding on the Dhaka Road Network},
+&#x20; title = {Comparative Analysis of UCS, A\* and Hill Climbing
 
-&#x20; author       = {Zidan, Md. Mejbaul Islam and Parvej, Md. Hemel and Roja, Most. Nair Nazmim},
+&#x20;          for Route Finding on the Dhaka Road Network},
 
-&#x20; year         = {2026},
+&#x20; author = {Zidan, Md. Mejbaul Islam and
+
+&#x20;           Parvej, Md. Hemel and
+
+&#x20;           Roja, Most. Nair Nazmim},
+
+&#x20; year = {2026},
 
 &#x20; howpublished = {\\url{https://github.com/MejbahZidan/AI-Group-11}},
 
-&#x20; note         = {Artificial Intelligence Laboratory (ICE-4108), Bangladesh University of Professionals}
+&#x20; note = {Artificial Intelligence Laboratory, ICE-4108,
+
+&#x20;         Bangladesh University of Professionals}
 
 }
 
@@ -744,33 +1074,15 @@ AI-Group-11/
 
 
 
-\## Team
+\## 📜 License \& Attribution
 
 
 
-| Contributor | Student ID |
-
-|---|---|
-
-| Md. Mejbaul Islam Zidan | 23549009069 |
-
-| Md. Hemel Parvej | 23549009005 |
-
-| Most. Nair Nazmim Roja | 2254901013 |
+Road-network data is provided by \[OpenStreetMap contributors](https://www.openstreetmap.org/copyright) under the Open Database License (ODbL).
 
 
 
-\*\*Program:\*\* BICE 2023 | \*\*Department:\*\* ICT | \*\*Institution:\*\* Bangladesh University of Professionals (BUP) | \*\*Course:\*\* Artificial Intelligence Laboratory (ICE-4108)
-
-
-
-\*\*Academic supervision\*\*
-
-
-
-\- Jasiya Fairiz Raisa, Lecturer, Department of ICT
-
-\- Nazneen Akter, Assistant Professor, Department of ICT
+The original project source code does not currently declare a software license. Until a `LICENSE` file is added, all rights to the original code remain with the authors.
 
 
 
@@ -778,47 +1090,17 @@ AI-Group-11/
 
 
 
-\## References
+<p align="center">
 
+&#x20; <strong>Built with curiosity, algorithms, and real-world data.</strong>
 
+&#x20; <br><br>
 
-1\. S. Russell and P. Norvig, \*Artificial Intelligence: A Modern Approach\*, 4th ed. Pearson, 2020.
+&#x20; Artificial Intelligence Laboratory · ICE-4108
 
-2\. P. E. Hart, N. J. Nilsson and B. Raphael, "A Formal Basis for the Heuristic Determination of Minimum Cost Paths," \*IEEE Transactions on Systems Science and Cybernetics\*, vol. 4, no. 2, pp. 100-107, 1968.
+&#x20; <br>
 
-3\. E. W. Dijkstra, "A Note on Two Problems in Connexion with Graphs," \*Numerische Mathematik\*, vol. 1, pp. 269-271, 1959.
+&#x20; Bangladesh University of Professionals · Dhaka, Bangladesh
 
-4\. G. Boeing, "OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks," \*Computers, Environment and Urban Systems\*, vol. 65, pp. 126-139, 2017.
-
-5\. OpenStreetMap contributors, \[OpenStreetMap](https://www.openstreetmap.org/).
-
-6\. A. Hagberg, D. Schult and P. Swart, "Exploring Network Structure, Dynamics, and Function Using NetworkX," \*Proceedings of the 7th Python in Science Conference\*, pp. 11-15, 2008.
-
-
-
-\## License and attribution
-
-
-
-Map data (c) OpenStreetMap contributors, available under the \[Open Database License (ODbL)](https://www.openstreetmap.org/copyright).
-
-
-
-The project source code does not yet declare a software license. Until a `LICENSE` file is added, all rights to the original code remain with the authors.
-
-
-
-\---
-
-
-
-<div align="center">
-
-
-
-\*\*Artificial Intelligence Laboratory | ICE-4108 | Bangladesh University of Professionals | Dhaka, Bangladesh\*\*
-
-
-
-</div>
+</p>
 
